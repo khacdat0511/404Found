@@ -3,7 +3,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-
+var UserRoutes = require("./routes/UserRoutes");
 
 var app = express();
 
@@ -16,6 +16,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+//UserRoutes
+app.use('/User', UserRoutes);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
